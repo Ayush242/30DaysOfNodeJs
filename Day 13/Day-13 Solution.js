@@ -13,8 +13,9 @@ app.use(express.static("public"));
 ws_server.on("connection", function connection(ws) {
     ws.on("message", function message(message) {
         console.log("Sent Message: "+ message);
+        ws.send("Message received");
     })
-
+    
 })
 
 app.get("/websocket", (req, res) => {

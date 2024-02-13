@@ -1,14 +1,12 @@
 const ws = new WebSocket("ws://localhost:3001/websocket");
 const button = document.querySelector("button");
+const input = document.querySelector("input");
 
-button.addEventListener("click", () => ws.send("Hello from client"))
+button.addEventListener("click", () => ws.send(input.value))
 
-mywsServer.onopen = function() {
-    button.disabled = false
-}
 
 //handling message event
-mywsServer.onmessage = function(event) {
+ws.onmessage = function(event) {
     const { data } = event
     console.log(data);
 }
