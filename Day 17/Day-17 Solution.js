@@ -17,8 +17,12 @@ async function addUserToDatabase(user) {
         email: user.email,
     })
 
-    const res = await newUser.save();
-    console.log(res);
+    try {
+        const res = await newUser.save();
+        console.log(res);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 addUserToDatabase({ username: 'john_doe', email: 'john@example.com' })
